@@ -1,0 +1,877 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Scala - Introduction</title>
+
+		<meta name="description" content="A Scala introduction presentation">
+		<meta name="author" content="Johan Sjöberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.0/styles/zenburn.min.css">
+
+        <script type="text/javascript" src="lib/scripts/shCore.js"></script>
+        <script type="text/javascript" src="lib/scripts/shBrushScala.js"></script>
+        <link type="text/css" rel="stylesheet" href="lib/styles/shThemeRDark.css"/>
+        <link type="text/css" rel="stylesheet" href="lib/styles/shCoreRDark.css"/>
+        <script type="text/javascript">
+//            SyntaxHighlighter.defaults['gutter'] = false;
+            SyntaxHighlighter.defaults['smart-tabs'] = false;
+            SyntaxHighlighter.defaults['class-name'] = 'class_name_demo';
+            SyntaxHighlighter.all();
+        </script>
+
+        <style>
+            .class_name_demo { border: 2px solid #000; padding: 10px}
+            .keyword {
+                color: #87ceeb;
+                /*text-shadow: 0px 0px 8px #000;*/
+                /*display:inline-block;
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);*/
+                /*text-shadow:  1px 1px 0px #777  ;*/
+            }
+            .highlight {
+                color: #f6f6ae;
+            }
+            .title {display: inline-block;}
+            .subtitle {color: #f5deb3;}
+            .text {
+                font-size: 24px;
+                font-family: Georgia;
+                height: auto !important;
+
+            }
+            .parenthesis {
+                color: gray;
+                font-size: 65%;
+            }
+            .syntaxhighlighter table td.code .line {
+                color: red;
+            }
+        </style>
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1 class="title">Scala</h1> <h4 class="title">for Java developers</h4>
+                    <script>
+						// Delicously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+				</section>
+
+                <!-- History slides -->
+                <section>
+                    <section>
+                        <h1 class="title">History</h1> <h4 class="title">Who? What? When?</h4>
+                    </section>
+                    <section>
+                        <h1>Martin Odersky</h1>
+                        <h3>Creator of Scala</h3>
+                        <h4 class="fragment">and</h4>
+                        <h3 class="fragment">Java Compiler</h3>
+                        <h4 class="fragment">and</h4>
+                        <h3 class="fragment">Java Generics</h3>
+                    </section>
+                    <section>
+                        <h1>Scala Versions</h1>
+                        <h3 class="fragment">Official release in 2007</h3>
+                        <h3 class="fragment">Current version is 2.9.2</h3>
+                        <h3 class="fragment">2.10 to be released in Q3-Q4 2012</h3>
+                    </section>
+                </section>
+
+                <!-- Scala language in short -->
+                <section>
+                    <section>
+                        <h1 class="title">Scala language</h1> <h4 class="title">What is it?</h4>
+                    </section>
+                    <section>
+                        <h1>Object-oriented</h1>
+                        <h3>Everything is an object</h3>
+                    </section>
+                    <section>
+                        <h1>Functional</h1>
+                        <h3>Support for functional programming</h3>
+                    </section>
+                    <section>
+                        <h1>JVM language</h1>
+                        <h3 class="fragment">Runs on the JVM</h3>
+                        <h3 class="fragment">Good Java interop</h3>
+                        <h3 class="fragment">Java Eco-system</h3>
+                    </section>
+                    <section>
+                        <h1>Statically typed</h1>
+                        <h3>with type inference</h3>
+                    </section>
+                    <section> <!-- TODO: This needs to be better -->
+                        <h1>Scalable</h1>
+                        <h3 class="fragment">Actors</h3>
+                        <h3 class="fragment">Parallel collections</h3>
+                    </section>
+
+                </section>
+
+                <!-- Propaganda slides -->
+                <section>
+                    <section>
+                        <h1 class="title">Positive</h1> <h4 class="title">Some propaganda</h4>
+                        <!--<p>
+                            <i><small>- <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small></i>
+                        </p>-->
+
+                        <aside class="notes">
+                            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you run the speaker notes server.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <a href="http://en.wikipedia.org/wiki/James_Gosling"><h1>James Gosling</h1></a>
+                        <hr />
+                        <h3>Father of Java</h3>
+                        <hr />
+                        <blockquote>If I were to pick a language to use today other than Java, it would be Scala</blockquote>
+                    </section>
+
+                    <section>
+                        <a href="http://en.wikipedia.org/wiki/James_Strachan_(programmer)"><h1>James Strachan</h1></a>
+                        <hr />
+                        <h3>Creator of Groovy</h3>
+                        <hr />
+                        <blockquote>I can honestly say if someone had shown me the Programming in Scala book by Martin Odersky, Lex Spoon & Bill Venners back in 2003 I'd probably have never created Groovy</blockquote>
+                    </section>
+
+                    <section>
+                        <a href="http://en.wikipedia.org/wiki/James_Strachan_(programmer)"><h1>Rod Johnsson</h1></a>
+                        <hr />
+                        <h3>Creator of Spring framework</h3>
+                        <hr />
+                        <blockquote>Playing with Scala. Loving it so far, even if IDE support isn't quite there yet.</blockquote>
+                        <br />
+                        <blockquote>I'd forgotten how much fun learning a new programming language is.</blockquote>
+                    </section>
+				</section>
+
+                <!-- Bad about Scala slides -->
+                <section>
+                    <section>
+                        <h1 class="title">Negative</h1> <h4 class="title">The bad parts</h4>
+                    </section>
+
+                    <section>
+                        <h1>IDE Support</h1>
+                        <h2>Not as good as in Java</h2>
+                    </section>
+
+                    <section>
+                        <h1>Compile time</h1>
+                        <h2>Slower compile time than Java</h2>
+                    </section>
+
+                    <section>
+                        <h1>Complexity</h1>
+                        <h2>Some parts of the language is hard to learn</h2>
+                    </section>
+
+                    <section>
+                        <h1>Adoption</h1>
+                        <h2>Small adoption compared to Java</h2>
+                    </section>
+                </section>
+
+                <section>
+                   <section>
+                       <h1 class="title">Small Differences</h1> <h4 class="title">to Java</h4>
+                   </section>
+                    <section>
+                        <h1>No Semicolons</h1>
+                        <h3>..almost</h3>
+                    </section>
+                   <section>
+                       <h1>No return keyword</h1>
+                       <h3>Last expression in a block returns</h3>
+                   </section>
+                   <section>
+                       <h1>[] for generics</h1>
+                       <h3>Generics is defined using [] instead of <></h3>
+                   </section>
+               </section>
+
+				<section>
+					<h1>Using the REPL</h1>
+                    <span class="fragment">
+                        <h1 style="display: inline;">R</h1><h2 style="display: inline;">ead</h2>
+                    </span>
+                    <span class="fragment">
+                        <h1 style="display: inline;">E</h1><h2 style="display: inline;">valuation</h2>
+                    </span>
+                    <span class="fragment">
+                        <h1 style="display: inline;">P</h1><h2 style="display: inline;">rint</h2>
+                    </span>
+                    <span class="fragment">
+                        <h1 style="display: inline;">L</h1><h2 style="display: inline;">oop</h2>
+                    </span>
+                    <br />
+                    <br />
+                    <div class="fragment">
+                        <h4>aka</h4><h2>Interpreter</h2>
+                    </div>
+				</section>
+
+				<section>
+                    <section>
+                        <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                        <aside class="notes">
+                            Show example of var, explain that it supports multiple assignments. This means that var is a variable.
+                            Show example of val, explain that it supports only single assignments. This means that val is a value.
+                            Expand on the difference between var and val (multiple vs single assignment). Explain that val is the preferred way in Scala and in functional programming
+                        </aside>
+                    </section>
+                    <section >
+                        <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">var</span> is a keyword that defines variables</h4>
+                        <h4 class="fragment"><span class="keyword">val</span> is a keyword that defines values</h4>
+                        <h4 class="fragment">The type can be inferred</h4>
+                    </section>
+                    <section >
+                        <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
+                        <div>Variables<pre class="brush: scala;">
+var apple: String = "Apple"
+apple = "Pear" //Can be changed
+
+var orange = "Orange" //type is inferred to a String
+orange = 123 //Can't assign a Int to a String variable
+                        </pre></div>
+
+                        <div class="fragment">Values<pre class="brush: scala;">
+val apple: String = "Apple"
+apple = "Pear" //Can't be changed!
+
+val orange = "Orange" //type is infered to a String
+                        </pre></div >
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">def</span> defined the method</h4>
+                        <h4 class="fragment">Methods without an implementation are abstract</h4>
+                        <h4 class="fragment"><span class="keyword">=</span> must be used when returning a value</h4>
+                        <h4 class="fragment"><span class="keyword">Unit</span> is the same for Scala as <span class="keyword">void</span> is for Java</h4>
+                        <h4 class="fragment">Return type can be inferred</h4>
+                        <h4 class="fragment">Support for named parameters</h4>
+                        <h4 class="fragment">Support for default parameters</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+def double(number: Int) //abstract
+
+def double(number: Int): Int = number * 2
+
+def double(number: Int) = number * 2 // Return type is inferred
+
+def double(number: Int) = { // Return type is inferred
+  val doubledNumber = number * 2
+  println("output is " + doubledNumber) //log result
+  doubledNumber // Last statement in method returns
+}
+
+def double(number: Int) { // No '='-sign means nothing is returned
+  val doubledNumber = number * 2
+  println("output is " + doubledNumber) //log result
+  doubledNumber // won't get returned from method
+}
+                        </pre>
+                    </section>
+                    <section >
+                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+def multiply(x: Int, y: Int): Int = x * y
+
+val six = multiply(2, 3)
+val anotherSix = multiply(y = 2, x = 3) //named parameters
+
+def multiply(x: Int, y: Int = 2): Int = x * y //default value for y
+
+val four = multiply(2) //y will use default value 2
+
+                        </pre>
+                    </section>
+                </section>
+
+
+
+                <section>
+                    <section>
+                        <h1 class="title">If expression</h1>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">If expression</h1>
+                        <h4 class="fragment">Support for <span class="keyword">if</span>, <span class="keyword">else if</span> and <span class="keyword">else</span></h4>
+                        <h4 class="fragment"><span class="keyword">if</span> is an expression, not a statement i.e. it returns a value</h4>
+                        <h4 class="fragment">Similar to Java ternery operator <span class="keyword">?:</span></h4>
+                    </section>
+
+                   <section >
+                        <h1>If expression</h1>
+                        <h4>Example</h4>
+                        <pre class="brush: scala;">
+val number = 10
+val opinion = if(number > 5) {
+  "This number is too big"
+} else {
+  "I like this number!"
+}
+
+println(opinion)
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">For comprehension</h1>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">For comprehension</h1>
+                        <h4 class="fragment"><span class="keyword"><-</span> is used in generators <span class="parenthesis">(Think for each)</span></h4>
+                        <h4 class="fragment"><span class="keyword">if</span> is used for guards <span class="parenthesis">(Think filtering)</span></h4>
+                        <h4 class="fragment"><span class="keyword">yield</span> points to what is to be returned</h4>
+                    </section>
+
+                    <section >
+                        <h1>For comprehensions</h1>
+                        <h4>Example</h4>
+
+                        <pre class="brush: scala;">
+val names = List("Abraham", "Anna", "Ella", "Tomas", "Stellan")
+
+//Declarative
+val namesLongerThanFourChars = for(
+  name <- names
+  if name.length > 4
+) yield name
+
+println(namesLongerThanFourChars.mkString(", "))
+
+//Imperative
+var namesLongerThanFourChars = List[String]()
+for(name <- names){
+  if(name.length > 4) {
+    namesLongerThanFourChars = name :: namesLongerThanFourChars
+  }
+}
+
+println(namesLongerThanFourChars.mkString(", "  ))
+
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Coding style</h1>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
+                        <div class="fragment">
+                            <h2>Imperative programming</h2>
+                            <small>When you tell the computer what to do and exactly how to do it</small>
+                        </div>
+                        <div class="fragment">
+                            <br />
+                            <h2>Declarative programming</h2>
+                            <small>When you tell the computer what to do</small>
+                        </div>
+
+                        <h4 class="fragment"><br />Scala supports both ways, but favours declarative</h4>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
+
+                        <h2>Imperative example</h2>
+                        <pre class="brush: scala;">
+case class Client(name: String, accounts:List[Int])
+
+val clients = List(
+  Client("Eric", List(1000, 400, 50)),
+  Client("Michel", List(-10, 10, 0)),
+  Client("Roger", List(0, 0, 0))
+)
+var clientsWithZeroBalance = List[Client]()
+for(client <- clients){
+  var sum = 0
+  for(account <- client.accounts) {
+    sum += account
+  }
+  if(sum == 0){
+    clientsWithZeroBalance = client :: clientsWithZeroBalance
+  }
+}
+
+println(clientsWithZeroBalance.mkString("\n"))
+
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
+                        <h2>Declarative example</h2>
+                        <pre class="brush: scala;">
+case class Client(name: String, accounts:List[Int])
+
+val clients = List(
+  Client("Eric", List(1000, 400, 50)),
+  Client("Michel", List(-10, 10, 0)),
+  Client("Roger", List(0, 0, 0))
+)
+val clientsWithZeroBalance = for(
+  client <- clients
+  if client.accounts.sum == 0
+) yield client
+
+println(clientsWithZeroBalance.mkString("\n"))
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
+                        <h2>Functional example  <span class="parenthesis">(Sneak peak)</span></h2>
+                        <pre class="brush: scala;">
+case class Client(name: String, accounts:List[Int])
+
+val clients = List(
+  Client("Eric", List(1000, 400, 50)),
+  Client("Michel", List(-10, 10, 0)),
+  Client("Roger", List(0, 0, 0))
+)
+val clientsWithZeroBalance = clients.filter(_.accounts.sum == 0)
+
+println(clientsWithZeroBalance.mkString("\n"))
+                        </pre>
+                    </section>
+                    <section >
+                        <h1 class="title">Coding style</h1><h4 class="title">Immutable vs mutable</h4>
+                        <div class="fragment">
+                            <h2>Mutable</h2>
+                            <small>Mutable objects can change after their creation</small>
+                        </div>
+                        <div class="fragment">
+                            <br />
+                            <h2>Immutable</h2>
+                            <small>Immutable objects can't be changed after their creation</small>
+                        </div>
+
+                        <h4 class="fragment"><br />Scala supports both ways, but favours immutable</h4>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Access level</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Everything is public by default</h4>
+                        <h4 class="fragment"><span class="keyword">protected</span> give access to subclasses</h4>
+                        <h4 class="fragment"><span class="keyword">private</span> give access within the class</h4>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">class</span> keyword used for defining the class</h4>
+                        <h4 class="fragment">Constructor parameters = Class member variables</h4>
+                        <h4 class="fragment">Multiple constructors supported  <span class="parenthesis">(with restrictions)</span></h4>
+                        <h4 class="fragment">Default & Named parameter support in constructor</h4>
+                        <h4 class="fragment">No static members or methods as in Java</h4>
+                        <!-- write more if used -->
+                    </section>
+
+                    <section >
+                        <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+//public access for members by default
+class Name(val firstName: String, val lastName: String){
+
+  def this(val firstName: String) = this(firstName, "Doe")
+
+  def this() = this("John")
+
+  override def toString: String = {
+    "Name(" + firstName + ", " + lastName + ")"
+  }
+}
+
+//Or you just use default values to get the same behaviour
+class Name(val firstName: String = "John", val lastName: String = "Doe"){
+  override def toString: String = {
+    "Name(" + firstName + ", " + lastName + ")"
+  }
+}
+
+val johnDoe = new Name()
+val janeDoe = new Name("Jane")
+val robSmith = new Name("Rob", "Smith")
+val annSmith = new Name(lastName = "Smith", firstName = "Ann")
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">object</span> keyword used for defining a singleton</h4>
+                        <h4 class="fragment">The apply method can be called directly though the object name</h4>
+                        <h4 class="fragment"><span class="keyword">object</span> is called a companion object if class with same name exists</h4>
+                        <h4 class="fragment">The apply method is used as a factory in companion objects</h4>
+                        <h4 class="fragment">Use object where you would use Java static</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+object Name { //Companion object
+  def apply(val firstName:String = "John", val lastName: String = "Doe") = {
+    new Name(firstName, lastName)
+  }
+
+  def nameChild(parentName: Name, childFirstName: String) = {
+    Name(childFirstName, parentName.lastName)
+  }
+}
+
+val johnDoe = Name() //Same as calling Name.apply()
+val janeDoe = Name.nameChild("Jane", johnDoe)
+val robSmith = Name("Rob", "Smith")
+val annSmith = Name(lastName = "Smith", firstName = "Ann")
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">trait</span> keyword used for defining a trait</h4>
+                        <h4 class="fragment">Like a Java <span class="keyword">interface</span>, but  method implementations</h4>
+                        <h4 class="fragment"><span class="keyword">extends</span> and <span class="keyword">with</span> are used when mixing in a trait into a class</h4>
+                        <h4 class="fragment"><span class="keyword">Self-types</span> give access to the class that has the trait</h4>
+                        <h4 class="fragment"><span class="keyword">Self-types</span> restricts usage of the trait</h4>
+                        <h4 class="fragment">Traits can be mixed in during object creation</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+class Person(val firstName: String, val lastName:String)
+
+trait Speaker {
+  def speak(sentences: String) = println(sentences)
+}
+
+trait Greeter { person: Person with Speaker =>
+  def greet() = speak("Hi my name is " + person.firstName + " " + person.lastName)
+}
+
+//Mixin traits during instance creation
+val person = new Person("Ted", "Steele") with Speaker with Greeter
+
+person.greet() //Prints 'Hi my name is Ted Steele'
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">Tuple</span> is a container for more than one value</h4>
+                        <h4 class="fragment">Parenthesis used to define a <span class="keyword">tuple</span></h4>
+                        <h4 class="fragment">The types of the different elements may vary</h4>
+                        <h4 class="fragment">Scala supports tuples with up to <span class="highlight">22</span> elements</h4>
+                        <h4 class="fragment">Extraction of values from a <span class="keyword">tuple</span> is simple</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+//Defines a tuple of type (String, String)
+val fullName = ("John", "Doe")
+
+//Pattern matching to extract the members of the tuple
+val (firstName, LastName) = fullName
+
+//Defines a tuple of type (String, String, Int)
+val person = ("John", "Doe", 25)
+
+//Extracted types = firstName: String, lastName: String, age: Int
+val (firstName, lastName, age) = person
+
+                        </pre>
+                    </section>
+                </section>
+                <!-- advanced section -->
+                <section>
+                    <section>
+                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
+                        <h4 class="fragment">Support for multiple parameter lists</h4>
+                        <!-- write more if used -->
+                    </section>
+
+                    <section >
+                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
+
+                        <div class="fragment"><pre class="brush: scala;">
+def multiply(x: Int)(y: Int) = x * y //multiple parameter lists
+var double = multiply(x)(_) //returns a partially applied function
+var double = multiply(x)_ //returns a partially applied function for
+                          //the remaining parameter lists
+
+val eight = double(4) //which we can use for doubling Ints
+                        </pre></div>
+                    </section>
+                </section>
+
+                <section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section>
+					<section data-state="alert">
+						<h2>Global State</h2>
+						<p>
+							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+							will be added as a class to the document element when the slide is open. This let's you
+							apply broader style changes, like switching the background.
+						</p>
+						<a href="#/7/1" class="image">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
+						</a>
+					</section>
+					<section data-state="blackout">
+						<h2>"blackout"</h2>
+						<a href="#/7/2" class="image">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
+						</a>
+					</section>
+					<section data-state="soothe">
+						<h2>"soothe"</h2>
+						<a href="#/7/0" class="image">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section data-state="customevent">
+					<h2>Custom Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+					</blockquote>
+				</section>
+				
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+    
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i < len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) ) {
+        node.className += ' roll';
+      }
+    };
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+				
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,<br/>
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Fragmented Views</h2>
+					<p>Hit the next arrow...</p>
+					<p class="fragment">... to step through ...</p>
+					<ol>
+						<li class="fragment"><code>any type</code></li>
+						<li class="fragment"><em>of view</em></li>
+						<li class="fragment"><strong>fragments</strong></li>
+					</ol>
+				</section>
+				
+				<section>
+					<h2>Spectacular image!</h2>
+					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
+						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
+					</a>
+				</section>
+				
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
+						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
+						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h1>THE END</h1>
+					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+
+		<script>
+			// Load reveal.js as well as a classList polyfill if needed
+			head.js( !document.body.classList ? 'lib/js/classList.js' : null )
+				.js( 'js/reveal.js', function() {
+
+				// Parse the query string into a key/value object
+				var query = {};
+				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+				} );
+
+				// Fires when a slide with data-state=customevent is activated
+				Reveal.addEventListener( 'customevent', function() {
+					console.log( '"customevent" has fired' );
+				} );
+
+				// Fires each time a new slide is activated
+				Reveal.addEventListener( 'slidechanged', function( event ) {
+					// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				} );
+
+				// Full list of configuration options available here:
+				// https://github.com/hakimel/reveal.js#configuration
+				Reveal.initialize({
+					controls: true,
+					progress: true,
+					history: true,
+                    rollingLinks: false,
+					theme: query.theme || 'default', // default/neon/beige
+					transition: query.transition || 'linear' // default/cube/page/concave/linear(2d)
+				});
+
+			} );
+			
+			// Load highlight.js for syntax highlighting of code samples
+			/*head.js( 'http://yandex.st/highlightjs/7.0/highlight.min.js', function() {
+				hljs.initHighlightingOnLoad();
+			} );*/
+
+			// If we're runnning the notes server we need to include some additional JS
+			// TODO Is there a better way to determine if we're running the notes server?
+			if( window.location.host === 'localhost:1947' ) {
+				head.js( 'socket.io/socket.io.js', 'plugin/speakernotes/client.js' );
+			}
+		</script>
+		
+	</body>
+</html>
