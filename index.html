@@ -22,6 +22,7 @@
 
         <script type="text/javascript" src="lib/scripts/shCore.js"></script>
         <script type="text/javascript" src="lib/scripts/shBrushScala.js"></script>
+        <script type="text/javascript" src="lib/scripts/shBrushJava.js"></script>
         <link type="text/css" rel="stylesheet" href="lib/styles/shThemeRDark.css"/>
         <link type="text/css" rel="stylesheet" href="lib/styles/shCoreRDark.css"/>
         <script type="text/javascript">
@@ -664,6 +665,128 @@ val (firstName, lastName, age) = person
 
                         </pre>
                     </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Constructor defines class members</h4>
+                        <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
+                        <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
+                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods generated for you</h4>
+                        <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+//Defines a immutable person class
+case class Person( firstName: String, lastName: String, age: Int)
+
+val johan = Person("Johan", "Sjöberg", 33)
+val otherJohan = johan.copy(age = 50)
+                        </pre>
+                    </section>
+                    <section >
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                        <h4>Let's try the same in Java</h4>
+                        <pre class="brush: java;">
+//Defines a immutable person class in Java
+public final class Person {
+    private final String firstName;
+    private final String lastName;
+    private final int age;
+
+    public Person(String firstName, String lastName, int age) {
+        assert firstName != null;
+        assert lastName != null;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // toString() ... hashCode() ... equals() ... copy() .. etc.
+}
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Function</h1> <h4 class="title">Types</h4>
+                        <h4 class="fragment">First-class functions <span class="keyword">=</span> functions are objects</h4>
+                        <h4 class="fragment">Anonymous Functions</h4>
+                        <h4 class="fragment">Higher-Order Functions <span class="keyword">=</span> Functions that take functions as input</h4>
+                        <h4 class="fragment">Closures</h4>
+                    </section>
+                    <section>
+                        <h1 class="title">Pure functions</h1> <h4 class="title">Theory</h4>
+                        <h4 class="fragment">Always return a value</h4>
+                        <h4 class="fragment">No side effects</h4>
+                        <h4 class="fragment">Deterministic = Input <span class="highlight">A</span> will always produce output <span class="highlight">B</span></h4>
+                        <h4 class="fragment">Easy to test and reuse</h4>
+                        <h4 class="fragment">Always write pure functions if possible</h4>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Syntax for a one parameter function type is e.g. <span class="highlight">String <span class="keyword">=></span> Int</span></h4>
+                        <h4 class="fragment">A method can be used as a function</h4>
+                        <h4 class="fragment">Function types can also be inferred</h4>
+                    </section>
+                    <section >
+                       <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+
+                       <pre class="brush: scala;">
+val names = List("Adam", "Stellan", "Emma", "Li")
+
+//Defines a anonymous function and stores it in value countLength
+//the type String => Int is actally not needed as it can be inferred
+val countLength: String => Int = (input: String) => input.length()
+
+//Goes through the list and applies the function on each element
+//creating a new list
+val nameLength = for(name <- names) yield countLength(name)
+
+//You can do the same using the collection method map in scala
+val nameLength = names map countLength //Same as names.map(countLength)
+
+//defines a method that does the same as the previously declared function
+def countLength(input: String) = input.length()
+
+//countLength method get converted to a function at compile time,
+//if it is used as a function
+val nameLength = names map countLength
+
+                       </pre>
+                   </section>
                 </section>
                 <!-- advanced section -->
                 <section>
