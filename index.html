@@ -282,7 +282,7 @@ val orange = "Orange" //type is infered to a String
 
                     <section>
                         <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">def</span> defined the method</h4>
+                        <h4 class="fragment"><span class="keyword">def</span> defines the method</h4>
                         <h4 class="fragment">Methods without an implementation are abstract</h4>
                         <h4 class="fragment"><span class="keyword">=</span> must be used when returning a value</h4>
                         <h4 class="fragment"><span class="keyword">Unit</span> is the same for Scala as <span class="keyword">void</span> is for Java</h4>
@@ -394,6 +394,8 @@ println(namesLongerThanFourChars.mkString(", "))
 var namesLongerThanFourChars = List[String]()
 for(name <- names){
   if(name.length > 4) {
+    // :: operator means append name to namesLongerThanFourChars
+    // and create a new list
     namesLongerThanFourChars = name :: namesLongerThanFourChars
   }
 }
@@ -770,14 +772,14 @@ val countLength: String => Int = (input: String) => input.length()
 val nameLength = for(name <- names) yield countLength(name)
 
 //You can do the same using the collection method map in scala
-val nameLength = names map countLength //Same as names.map(countLength)
+val nameLength = names.map(countLength)
 
 //defines a method that does the same as the previously declared function
 def countLength(input: String) = input.length()
 
 //countLength method get converted to a function at compile time,
 //if it is used as a function
-val nameLength = names map countLength
+val nameLength = names.map(countLength)
 
 //map using anonymous function with wildcard syntax '_'
 val nameLength = names.map(_.length())
