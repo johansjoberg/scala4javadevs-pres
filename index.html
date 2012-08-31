@@ -56,6 +56,7 @@
             .parenthesis {
                 color: gray;
                 font-size: 65%;
+                vertical-align: middle;
             }
             .syntaxhighlighter table td.code .line {
                 color: red;
@@ -677,7 +678,7 @@ val (firstName, lastName, age) = person
                         <h4 class="fragment">Constructor defines class members</h4>
                         <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
                         <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
-                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods generated for you</h4>
+                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods <span class="parenthesis">(and more)</span> generated for you</h4>
                         <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
                         <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
                         <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
@@ -697,29 +698,22 @@ val otherJohan = johan.copy(age = 50)
                     <section >
                         <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
                         <h4>Let's try the same in Java</h4>
-                        <pre class="brush: java;">
-//Defines a immutable person class in Java
-public final class Person {
+                        <pre style="font-size: 50%;" class="brush: java;">
+public final class Person { //Defines a immutable person class in Java
     private final String firstName;
     private final String lastName;
     private final int age;
 
     public Person(String firstName, String lastName, int age) {
-        assert firstName != null;
-        assert lastName != null;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+        //.. assignment
     }
 
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public int getAge() {
         return age;
     }
@@ -767,8 +761,8 @@ public final class Person {
                        <pre class="brush: scala;">
 val names = List("Adam", "Stellan", "Emma", "Li")
 
-//Defines a anonymous function and stores it in value countLength
-//the type String => Int is actally not needed as it can be inferred
+//Defines a function and stores it in value countLength, the
+//type String => Int is actually not needed as it can be inferred
 val countLength: String => Int = (input: String) => input.length()
 
 //Goes through the list and applies the function on each element
@@ -785,8 +779,71 @@ def countLength(input: String) = input.length()
 //if it is used as a function
 val nameLength = names map countLength
 
+//map using anonymous function with wildcard syntax '_'
+val nameLength = names.map(_.length())
+
+//map using anonymous function using syntax with type inferred
+val nameLength = names.map( name => name.length())
                        </pre>
                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Both mutable and immutable collections exist</h4>
+                        <h4 class="fragment">Immutable collections are default</h4>
+                        <h4 class="fragment">Immutable collections are default</h4>
+                        <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
+                        <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
+                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods <span class="parenthesis">(and more)</span> generated for you</h4>
+                        <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
+                    </section>
+
+                    <section >
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+
+                        <pre class="brush: scala;">
+//Defines a immutable person class
+case class Person( firstName: String, lastName: String, age: Int)
+
+val johan = Person("Johan", "Sjöberg", 33)
+val otherJohan = johan.copy(age = 50)
+                        </pre>
+                    </section>
+                    <section >
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                        <h4>Let's try the same in Java</h4>
+                        <pre style="font-size: 50%;" class="brush: java;">
+public final class Person { //Defines a immutable person class in Java
+    private final String firstName;
+    private final String lastName;
+    private final int age;
+
+    public Person(String firstName, String lastName, int age) {
+        //.. assignment
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    // toString() ... hashCode() ... equals() ... copy() .. etc.
+}
+                        </pre>
+                    </section>
                 </section>
                 <!-- advanced section -->
                 <section>
