@@ -143,16 +143,7 @@
                         </div>
 
                         <div class="right_column">
-                            <h4 class="link"><a href="#/22">21. History</a></h4>
-                            <h4 class="link"><a href="#/23">22. Scala language</a></h4>
-                            <h4 class="link"><a href="#/24">23. Positive</a></h4>
-                            <h4 class="link"><a href="#/25">24. Negative</a></h4>
-                            <h4 class="link"><a href="#/26">25. Subtle differences</a></h4>
-                            <h4 class="link"><a href="#/27">26. Using the REPL</a></h4>
-                            <h4 class="link"><a href="#/28">27. Variable</a></h4>
-                            <h4 class="link"><a href="#/29">28. Method</a></h4>
-                            <h4 class="link"><a href="#/30">29. If Expression</a></h4>
-                            <h4 class="link"><a href="#/31">30. For Comprehension</a></h4>
+                            <h4 class="link"><a href="#/22">21. Resources</a></h4>
                         </div>
 
                         </ol>
@@ -1024,44 +1015,49 @@ val parallelTime = measureTime(workers) {
                         <h4 class="fragment">Know your collection types, or pay the price</h4>
                         <h4 class="fragment">If lazy, use Vector</h4>
                     </section>
+                </section>
 
-                    <section >
-                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                <!-- PATTERN MATCHING -->
+                <section>
+                    <section>
+                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
 
+                    <section>
+                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
                         <pre class="brush: scala;">
-//Defines a immutable person class
-case class Person( firstName: String, lastName: String, age: Int)
+import collection.mutable.ListBuffer
 
-val johan = Person("Johan", "Sjöberg", 33)
-val otherJohan = johan.copy(age = 50)
+val names = ListBuffer("Olof")
+names += "Anna" //append
+println(names.mkString(", ")) //prints Olof, Anna
+
+var names = List("Olof") //immutable
+"Anna" :: names //prepend
+//names = List("Olof").. you must store the new list
+
+names = "Anna" :: names //prepend and store in variable
+//names = List("Anna", "Olof")
+
+var names = Vector("Olof") //immutable
+names = "Anna" +: names //append
+//names = Vector("Anna", "Olof")
+
+var names = Vector("Olof") //immutable
+names = names :+ "Anna" //prepend
+//names = Vector("Olof", "Anna")
                         </pre>
                     </section>
-                    <section >
-                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
-                        <h4>Let's try the same in Java</h4>
-                        <pre style="font-size: 50%;" class="brush: java;">
-public final class Person { //Defines a immutable person class in Java
-    private final String firstName;
-    private final String lastName;
-    private final int age;
-
-    public Person(String firstName, String lastName, int age) {
-        //.. assignment
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public int getAge() {
-        return age;
-    }
-
-    // toString() ... hashCode() ... equals() ... copy() .. etc.
-}
-                        </pre>
+                    <section>
+                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Both mutable and immutable collections exist</h4>
+                        <h4 class="fragment"><span class="keyword">Immutable</span> collections are default</h4>
+                        <h4 class="fragment">Both parallel and non-parallel collections exist</h4>
+                        <h4 class="fragment"><span class="highlight">Non-parallel</span> collections are default</h4>
+                        <h4 class="fragment">Rich collection api</h4>
+                        <h4 class="fragment">Know your collection types, or pay the price</h4>
+                        <h4 class="fragment">If lazy, use Vector</h4>
                     </section>
                 </section>
                 <!-- advanced section -->
