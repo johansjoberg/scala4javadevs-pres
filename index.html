@@ -61,6 +61,35 @@
             .syntaxhighlighter table td.code .line {
                 color: red;
             }
+
+            div.left_column {
+                float: left;
+                width: 7.2em;
+                padding-right: 0.5em;
+                display: inline;
+                border-right: 1px #808080 solid;
+            }
+
+            div.center_column {
+                float: left;
+                width: 7.2em;
+                display: inline;
+                padding-right: 0.5em;
+                padding-left: 0.5em;
+                border-right: 1px #808080 solid;
+           }
+
+            div.right_column {
+                float: right;
+                width: 7.2em;
+                display: inline;
+                padding-left: 0.5em;
+            }
+
+            h4.link{
+                font-size: 1em;
+                line-height: 0.8em;
+            }
         </style>
 	</head>
 	
@@ -81,7 +110,56 @@
 					</script>
 				</section>
 
-                <!-- History slides -->
+                <section>
+                    <h1 class="title">Orientation</h1> <h4 class="title">Click your chapter of interest</h4>
+                    <div class="my_wrapper">
+
+                        <ol>
+
+                        <div class="left_column">
+                            <h4 class="link"><a href="#/2">1. History</a></h4>
+                            <h4 class="link"><a href="#/3">2. Scala language</a></h4>
+                            <h4 class="link"><a href="#/4">3. Positive</a></h4>
+                            <h4 class="link"><a href="#/5">4. Negative</a></h4>
+                            <h4 class="link"><a href="#/6">5. Subtle differences</a></h4>
+                            <h4 class="link"><a href="#/7">6. Using the REPL</a></h4>
+                            <h4 class="link"><a href="#/8">7. Variable</a></h4>
+                            <h4 class="link"><a href="#/9">8. Method</a></h4>
+                            <h4 class="link"><a href="#/10">9. If Expression</a></h4>
+                            <h4 class="link"><a href="#/11">10. For Comprehension</a></h4>
+                        </div>
+
+                        <div class="center_column">
+                            <h4 class="link"><a href="#/12">11. Coding Style</a></h4>
+                            <h4 class="link"><a href="#/13">12. Access Level</a></h4>
+                            <h4 class="link"><a href="#/14">13. Class</a></h4>
+                            <h4 class="link"><a href="#/15">14. Object</a></h4>
+                            <h4 class="link"><a href="#/16">15. Traits</a></h4>
+                            <h4 class="link"><a href="#/17">16. Tuple</a></h4>
+                            <h4 class="link"><a href="#/18">17. Case class</a></h4>
+                            <h4 class="link"><a href="#/19">18. Function</a></h4>
+                            <h4 class="link"><a href="#/20">19. Collections</a></h4>
+                            <h4 class="link"><a href="#/21">20. Pattern Matching</a></h4>
+                        </div>
+
+                        <div class="right_column">
+                            <h4 class="link"><a href="#/22">21. History</a></h4>
+                            <h4 class="link"><a href="#/23">22. Scala language</a></h4>
+                            <h4 class="link"><a href="#/24">23. Positive</a></h4>
+                            <h4 class="link"><a href="#/25">24. Negative</a></h4>
+                            <h4 class="link"><a href="#/26">25. Subtle differences</a></h4>
+                            <h4 class="link"><a href="#/27">26. Using the REPL</a></h4>
+                            <h4 class="link"><a href="#/28">27. Variable</a></h4>
+                            <h4 class="link"><a href="#/29">28. Method</a></h4>
+                            <h4 class="link"><a href="#/30">29. If Expression</a></h4>
+                            <h4 class="link"><a href="#/31">30. For Comprehension</a></h4>
+                        </div>
+
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- SCALA HISTORY -->
                 <section>
                     <section>
                         <h1 class="title">History</h1> <h4 class="title">Who? What? When?</h4>
@@ -102,7 +180,7 @@
                     </section>
                 </section>
 
-                <!-- Scala language in short -->
+                <!-- SCALA LANG IN SHORT -->
                 <section>
                     <section>
                         <h1 class="title">Scala language</h1> <h4 class="title">What is it?</h4>
@@ -133,7 +211,7 @@
 
                 </section>
 
-                <!-- Propaganda slides -->
+                <!-- POSITIVE -->
                 <section>
                     <section>
                         <h1 class="title">Positive</h1> <h4 class="title">Some propaganda</h4>
@@ -173,7 +251,7 @@
                     </section>
 				</section>
 
-                <!-- Bad about Scala slides -->
+                <!-- NEGATIVE -->
                 <section>
                     <section>
                         <h1 class="title">Negative</h1> <h4 class="title">The bad parts</h4>
@@ -200,14 +278,19 @@
                     </section>
                 </section>
 
+                <!-- SUBTLE DIFFERENCES TO JAVA -->
                 <section>
                    <section>
-                       <h1 class="title">Small Differences</h1> <h4 class="title">to Java</h4>
+                       <h1 class="title">Subtle Differences</h1> <h4 class="title">to Java</h4>
                    </section>
-                    <section>
-                        <h1>No Semicolons</h1>
-                        <h3>..almost</h3>
-                    </section>
+                   <section>
+                       <h1>No Semicolons</h1>
+                       <h3>..almost</h3>
+                   </section>
+                   <section>
+                       <h1>Expression oriented</h1>
+                       <h3>Everything is an expression</h3>
+                   </section>
                    <section>
                        <h1>No return keyword</h1>
                        <h3>Last expression in a block returns</h3>
@@ -216,9 +299,10 @@
                        <h1>[] for generics</h1>
                        <h3>Generics is defined using [] instead of <></h3>
                    </section>
-               </section>
+                </section>
 
-				<section>
+                <!-- REPL -->
+			    <section>
 					<h1>Using the REPL</h1>
                     <span class="fragment">
                         <h1 style="display: inline;">R</h1><h2 style="display: inline;">ead</h2>
@@ -239,6 +323,7 @@
                     </div>
 				</section>
 
+                <!-- VARIABLE -->
 				<section>
                     <section>
                         <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
@@ -248,12 +333,6 @@
                             Show example of val, explain that it supports only single assignments. This means that val is a value.
                             Expand on the difference between var and val (multiple vs single assignment). Explain that val is the preferred way in Scala and in functional programming
                         </aside>
-                    </section>
-                    <section >
-                        <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">var</span> is a keyword that defines variables</h4>
-                        <h4 class="fragment"><span class="keyword">val</span> is a keyword that defines values</h4>
-                        <h4 class="fragment">The type can be inferred</h4>
                     </section>
                     <section >
                         <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
@@ -272,25 +351,20 @@ apple = "Pear" //Can't be changed!
 val orange = "Orange" //type is infered to a String
                         </pre></div >
                     </section>
+                    <section >
+                        <h1 class="title">Variable</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">var</span> is a keyword that defines variables</h4>
+                        <h4 class="fragment"><span class="keyword">val</span> is a keyword that defines values</h4>
+                        <h4 class="fragment">The type can be inferred</h4>
+                    </section>
                 </section>
 
+                <!-- METHODS -->
                 <section>
                     <section>
                         <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">def</span> defines the method</h4>
-                        <h4 class="fragment">Methods without an implementation are abstract</h4>
-                        <h4 class="fragment"><span class="keyword">=</span> must be used when returning a value</h4>
-                        <h4 class="fragment"><span class="keyword">Unit</span> is the same for Scala as <span class="keyword">void</span> is for Java</h4>
-                        <h4 class="fragment">Return type can be inferred</h4>
-                        <h4 class="fragment">Support for named parameters</h4>
-                        <h4 class="fragment">Support for default parameters</h4>
-                    </section>
-
                     <section >
                         <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
 
@@ -316,7 +390,6 @@ def double(number: Int) { // No '='-sign means nothing is returned
                     </section>
                     <section >
                         <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
-
                         <pre class="brush: scala;">
 def multiply(x: Int, y: Int): Int = x * y
 
@@ -329,24 +402,25 @@ val four = multiply(2) //y will use default value 2
 
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Method</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">def</span> defines the method</h4>
+                        <h4 class="fragment">Methods without an implementation are abstract</h4>
+                        <h4 class="fragment"><span class="keyword">=</span> must be used when returning a value</h4>
+                        <h4 class="fragment"><span class="keyword">Unit</span> is the same for Scala as <span class="keyword">void</span> is for Java</h4>
+                        <h4 class="fragment">Return type can be inferred</h4>
+                        <h4 class="fragment">Support for named parameters</h4>
+                        <h4 class="fragment">Support for default parameters</h4>
+                    </section>
                 </section>
 
-
-
+                <!-- IF STATEMENT -->
                 <section>
                     <section>
                         <h1 class="title">If expression</h1>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">If expression</h1>
-                        <h4 class="fragment">Support for <span class="keyword">if</span>, <span class="keyword">else if</span> and <span class="keyword">else</span></h4>
-                        <h4 class="fragment"><span class="keyword">if</span> is an expression, not a statement i.e. it returns a value</h4>
-                        <h4 class="fragment">Similar to Java ternery operator <span class="keyword">?:</span></h4>
-                    </section>
-
-                   <section >
+                    <section >
                         <h1>If expression</h1>
                         <h4>Example</h4>
                         <pre class="brush: scala;">
@@ -360,25 +434,22 @@ val opinion = if(number > 5) {
 println(opinion)
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">If expression</h1>
+                        <h4 class="fragment">Support for <span class="keyword">if</span>, <span class="keyword">else if</span> and <span class="keyword">else</span></h4>
+                        <h4 class="fragment"><span class="keyword">if</span> is an expression, not a statement i.e. it returns a value</h4>
+                        <h4 class="fragment">Similar to Java ternery operator <span class="keyword">?:</span></h4>
+                    </section>
                 </section>
 
+                <!-- FOR COMPREHENSIONS -->
                 <section>
                     <section>
                         <h1 class="title">For comprehension</h1>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">For comprehension</h1>
-                        <h4 class="fragment"><span class="keyword"><-</span> is used in generators <span class="parenthesis">(Think for each)</span></h4>
-                        <h4 class="fragment"><span class="keyword">if</span> is used for guards <span class="parenthesis">(Think filtering)</span></h4>
-                        <h4 class="fragment"><span class="keyword">yield</span> points to what is to be returned</h4>
-                    </section>
-
                     <section >
                         <h1>For comprehensions</h1>
-                        <h4>Example</h4>
-
                         <pre class="brush: scala;">
 val names = List("Abraham", "Anna", "Ella", "Tomas", "Stellan")
 
@@ -404,13 +475,19 @@ println(namesLongerThanFourChars.mkString(", "  ))
 
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">For comprehension</h1>
+                        <h4 class="fragment"><span class="keyword"><-</span> is used in generators <span class="parenthesis">(Think for each)</span></h4>
+                        <h4 class="fragment"><span class="keyword">if</span> is used for guards <span class="parenthesis">(Think filtering)</span></h4>
+                        <h4 class="fragment"><span class="keyword">yield</span> points to what is to be returned</h4>
+                    </section>
                 </section>
 
+                <!-- CODING STYLE -->
                 <section>
                     <section>
                         <h1 class="title">Coding style</h1>
                     </section>
-
                     <section>
                         <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
                         <div class="fragment">
@@ -422,10 +499,8 @@ println(namesLongerThanFourChars.mkString(", "  ))
                             <h2>Declarative programming</h2>
                             <small>When you tell the computer what to do</small>
                         </div>
-
                         <h4 class="fragment"><br />Scala supports both ways, but favours declarative</h4>
                     </section>
-
                     <section>
                         <h1 class="title">Coding style</h1><h4 class="title">Declarative vs Imperative</h4>
 
@@ -504,6 +579,7 @@ println(clientsWithZeroBalance.mkString("\n"))
                     </section>
                 </section>
 
+                <!-- ACCESS LEVEL -->
                 <section>
                     <section>
                         <h1 class="title">Access level</h1> <h4 class="title">Basics</h4>
@@ -511,28 +587,16 @@ println(clientsWithZeroBalance.mkString("\n"))
                         <h4 class="fragment"><span class="keyword">protected</span> give access to subclasses</h4>
                         <h4 class="fragment"><span class="keyword">private</span> give access within the class</h4>
                     </section>
-
                 </section>
 
+                <!-- CLASS -->
                 <section>
                     <section>
                         <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">class</span> keyword used for defining the class</h4>
-                        <h4 class="fragment">Constructor parameters = Class member variables</h4>
-                        <h4 class="fragment">Multiple constructors supported  <span class="parenthesis">(with restrictions)</span></h4>
-                        <h4 class="fragment">Default & Named parameter support in constructor</h4>
-                        <h4 class="fragment">No static members or methods as in Java</h4>
-                        <!-- write more if used -->
-                    </section>
-
                     <section >
                         <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
-
                         <pre class="brush: scala;">
 //public access for members by default
 class Name(val firstName: String, val lastName: String){
@@ -559,26 +623,25 @@ val robSmith = new Name("Rob", "Smith")
 val annSmith = new Name(lastName = "Smith", firstName = "Ann")
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">class</span> keyword used for defining the class</h4>
+                        <h4 class="fragment">Constructor parameters = Class member variables</h4>
+                        <h4 class="fragment">Multiple constructors supported  <span class="parenthesis">(with restrictions)</span></h4>
+                        <h4 class="fragment">Default & Named parameter support in constructor</h4>
+                        <h4 class="fragment">No static members or methods as in Java</h4>
+                        <!-- TODO write more if used -->
+                    </section>
                 </section>
 
+                <!-- OBJECT -->
                 <section>
                     <section>
                         <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">object</span> keyword used for defining a singleton</h4>
-                        <h4 class="fragment">The apply method can be called directly though the object name</h4>
-                        <h4 class="fragment"><span class="keyword">object</span> is called a companion object if class with same name exists</h4>
-                        <h4 class="fragment">The apply method is used as a factory in companion objects</h4>
-                        <h4 class="fragment">Use object where you would use Java static</h4>
-                    </section>
-
                     <section >
                         <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
-
                         <pre class="brush: scala;">
 object Name { //Companion object
   def apply(val firstName:String = "John", val lastName: String = "Doe") = {
@@ -596,27 +659,24 @@ val robSmith = Name("Rob", "Smith")
 val annSmith = Name(lastName = "Smith", firstName = "Ann")
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">object</span> keyword used for defining a singleton</h4>
+                        <h4 class="fragment">The apply method can be called directly though the object name</h4>
+                        <h4 class="fragment"><span class="keyword">object</span> is called a companion object if class with same name exists</h4>
+                        <h4 class="fragment">The apply method is used as a factory in companion objects</h4>
+                        <h4 class="fragment">Use object where you would use Java static</h4>
+                    </section>
                 </section>
 
+                <!-- TRAITS -->
                 <section>
                     <section>
                         <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">trait</span> keyword used for defining a trait</h4>
-                        <h4 class="fragment">Like a Java <span class="keyword">interface</span>, but  method implementations</h4>
-                        <h4 class="fragment"><span class="keyword">extends</span> and <span class="keyword">with</span> are used when mixing in a trait into a class</h4>
-                        <h4 class="fragment"><span class="keyword">Self-types</span> give access to the class that has the trait</h4>
-                        <h4 class="fragment"><span class="keyword">Self-types</span> restricts usage of the trait</h4>
-                        <h4 class="fragment">Traits can be mixed in during object creation</h4>
-                    </section>
-
                     <section >
                         <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
-
                         <pre class="brush: scala;">
 class Person(val firstName: String, val lastName:String)
 
@@ -634,22 +694,23 @@ val person = new Person("Ted", "Steele") with Speaker with Greeter
 person.greet() //Prints 'Hi my name is Ted Steele'
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Traits</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">trait</span> keyword used for defining a trait</h4>
+                        <h4 class="fragment">Like a Java <span class="keyword">interface</span>, but  method implementations</h4>
+                        <h4 class="fragment"><span class="keyword">extends</span> and <span class="keyword">with</span> are used when mixing in a trait into a class</h4>
+                        <h4 class="fragment"><span class="keyword">Self-types</span> give access to the class that has the trait</h4>
+                        <h4 class="fragment"><span class="keyword">Self-types</span> restricts usage of the trait</h4>
+                        <h4 class="fragment">Traits can be mixed in during object creation</h4>
+                    </section>
                 </section>
+
+                <!-- TUPLE -->
                 <section>
                     <section>
                         <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment"><span class="keyword">Tuple</span> is a container for more than one value</h4>
-                        <h4 class="fragment">Parenthesis used to define a <span class="keyword">tuple</span></h4>
-                        <h4 class="fragment">The types of the different elements may vary</h4>
-                        <h4 class="fragment">Scala supports tuples with up to <span class="highlight">22</span> elements</h4>
-                        <h4 class="fragment">Extraction of values from a <span class="keyword">tuple</span> is simple</h4>
-                    </section>
-
                     <section >
                         <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
 
@@ -668,27 +729,24 @@ val (firstName, lastName, age) = person
 
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Tuple</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment"><span class="keyword">Tuple</span> is a container for more than one value</h4>
+                        <h4 class="fragment">Parenthesis used to define a <span class="keyword">tuple</span></h4>
+                        <h4 class="fragment">The types of the different elements may vary</h4>
+                        <h4 class="fragment">Scala supports tuples with up to <span class="highlight">22</span> elements</h4>
+                        <h4 class="fragment">Extraction of values from a <span class="keyword">tuple</span> is simple</h4>
+                    </section>
                 </section>
+
+                <!-- CASE CLASS -->
                 <section>
                     <section>
                         <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment">Constructor defines class members</h4>
-                        <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
-                        <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
-                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods <span class="parenthesis">(and more)</span> generated for you</h4>
-                        <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
-                        <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
-                        <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
-                    </section>
-
                     <section >
                         <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
-
                         <pre class="brush: scala;">
 //Defines a immutable person class
 case class Person( firstName: String, lastName: String, age: Int)
@@ -724,17 +782,28 @@ public final class Person { //Defines a immutable person class in Java
 }
                         </pre>
                     </section>
+                    <section>
+                        <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Constructor defines class members</h4>
+                        <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
+                        <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
+                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods <span class="parenthesis">(and more)</span> generated for you</h4>
+                        <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
+                        <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
+                    </section>
                 </section>
+
+                <!-- Function -->
                 <section>
                     <section>
                         <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
                     </section>
-
                     <section>
                         <h1 class="title">Function</h1> <h4 class="title">Types</h4>
-                        <h4 class="fragment">First-class functions <span class="keyword">=</span> functions are objects</h4>
-                        <h4 class="fragment">Anonymous Functions</h4>
-                        <h4 class="fragment">Higher-Order Functions <span class="keyword">=</span> Functions that take functions as input</h4>
+                        <h4 class="fragment">First-class functions <span class="parenthesis">= functions are objects</span></h4>
+                        <h4 class="fragment">Anonymous Functions <span class="parenthesis">= unstored/one-time functions</span></h4>
+                        <h4 class="fragment">Higher-Order Functions <span class="parenthesis">= Functions that take functions as input</span></h4>
                         <h4 class="fragment">Closures</h4>
                     </section>
                     <section>
@@ -745,20 +814,12 @@ public final class Person { //Defines a immutable person class in Java
                         <h4 class="fragment">Easy to test and reuse</h4>
                         <h4 class="fragment">Always write pure functions if possible</h4>
                     </section>
-
                     <section>
                         <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
                         <h2>Examples in the REPL</h2>
                     </section>
-
-                    <section>
-                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment">Syntax for a one parameter function type is e.g. <span class="highlight">String <span class="keyword">=></span> Int</span></h4>
-                        <h4 class="fragment">A method can be used as a function</h4>
-                        <h4 class="fragment">Function types can also be inferred</h4>
-                    </section>
                     <section >
-                       <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
 
                        <pre class="brush: scala;">
 val names = List("Adam", "Stellan", "Emma", "Li")
@@ -787,7 +848,79 @@ val nameLength = names.map(_.length())
 //map using anonymous function using syntax with type inferred
 val nameLength = names.map( name => name.length())
                        </pre>
-                   </section>
+                    </section>
+                    <section>
+                        <h1 class="title">Function</h1> <h4 class="title">Basics</h4>
+                        <h4 class="fragment">Syntax for a one parameter function type is e.g. <span class="highlight">String <span class="keyword">=></span> Int</span></h4>
+                        <h4 class="fragment">A method can be used as a function</h4>
+                        <h4 class="fragment">Function types can also be inferred</h4>
+                    </section>
+                    <section>
+                        <h1 class="title">Higher-Order Functions</h1>
+                        <blockquote>Function that take one or more functions as input parameters or a function that give a function as output.</blockquote>
+                        <br/>
+                        <h4 class="fragment">Easier to re-use code by using functions as building blocks</h4>
+                    </section>
+                    <section>
+                        <h1 class="title">Higher-Order Functions</h1>
+                        <pre class="brush: scala;">
+//higher-order function that filters Strings, how they are filtered
+//is decided by the predicate function input
+val filter = (predicate: String => Boolean, strings: List[String]) => {
+  for (
+    string <- strings
+    if predicate(string)
+  ) yield string
+}
+
+//function of type String => Boolean
+val notEmptyString = (str:String) => !str.isEmpty
+
+val words = List("Hi", "", "there")
+
+val realWords = filter(notEmptyString, words) //realWords = List(”Hi”, ”There”)
+                       </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Closures</h1>
+                        <blockquote>A function which can access non-local variables from the scope where the function was declared.</blockquote>
+                        <br/>
+                        <h4 class="fragment">Anonymous inner classes are the closest thing Java has to a closure</h4>
+                    </section>
+                    <section>
+                        <h1 class="title">Closures</h1>
+                        <h4>Java example</h4>
+                        <pre class="brush: java;">
+class BooleanWrap{
+    public boolean bool = false;
+}
+
+final BooleanWrap pushed = new BooleanWrap();
+
+JButton button = new JButton("Push Me");
+button.addActionListener( new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+         pushed.bool = true;
+     }
+});
+
+button.doClick();
+// pushed.bool has the value true
+                       </pre>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Closures</h1>
+                        <h4>Scala example</h4>
+                        <pre class="brush: scala;">
+var pushed = false
+val button = new JButton("Push Me")
+
+button.addActionListener( ae: ActionEvent => pushed = true)
+button.doClick()
+//pushed has the value true
+                         </pre>
+                     </section>
                 </section>
                 <section>
                     <section>
@@ -797,15 +930,99 @@ val nameLength = names.map( name => name.length())
 
                     <section>
                         <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
+                        <pre class="brush: scala;">
+import collection.mutable.ListBuffer
+
+val names = ListBuffer("Olof")
+names += "Anna" //append
+println(names.mkString(", ")) //prints Olof, Anna
+
+var names = List("Olof") //immutable
+"Anna" :: names //prepend
+//names = List("Olof").. you must store the new list
+
+names = "Anna" :: names //prepend and store in variable
+//names = List("Anna", "Olof")
+
+var names = Vector("Olof") //immutable
+names = "Anna" +: names //append
+//names = Vector("Anna", "Olof")
+
+var names = Vector("Olof") //immutable
+names = names :+ "Anna" //prepend
+//names = Vector("Olof", "Anna")
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
+                        <pre class="brush: scala;">
+val numbers = List.range(1,10) //list of numbers 1 to 10
+val sameNumbers = 1 until 10 //range of numbers 1 to 10
+
+val sumOfBoth = numbers.sum + sameNumbers.sum //45 + 45 = 90
+
+val numbers = List(1,4,2,3,10,9)
+val count = numbers.count(_ > 5) // 2 elements are bigger than 5
+val sorted = numbers.sorted // List(1,2,3,4,9,10)
+
+
+case class Person(name: String, age: Int)
+
+val persons = List(
+  Person("John Taylor", 40),
+  Person("Anne Edwards", 50),
+  Person("Pete Smith", 16)
+)
+val aboveEighteen = persons.filter(_.age > 18)
+val (aboveEighteen, eighteenAndBelow) = persons.partition(_.age > 18)
+val names = persons.map(_.name)
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
+                        <pre class="brush: scala;">
+import collection.GenSeq
+
+//class for simulating work
+case class Worker(workInMs: Long) {
+  def work() = {
+    Thread.sleep(workInMs)
+    "Done!"
+  }
+}
+
+//method for measuring the time of the execution
+def measureTime(workers: List[Worker])(work: GenSeq[Worker] => GenSeq[String]) = {
+  val start = System.currentTimeMillis()
+  work(workers)
+  val stop = System.currentTimeMillis()
+  stop - start
+}
+
+//create a list of 100 Worker objects
+val workers = List.fill(100)(Worker(100))
+
+//sequential work
+val sequentialTime = measureTime(workers) {
+  _.map(_.work())
+}
+
+//parallel work
+val parallelTime = measureTime(workers) {
+  _.par.map(_.work())
+}
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
                         <h4 class="fragment">Both mutable and immutable collections exist</h4>
-                        <h4 class="fragment">Immutable collections are default</h4>
-                        <h4 class="fragment">Immutable collections are default</h4>
-                        <h4 class="fragment"><span class="keyword">var</span> means the members are re-assignable</h4>
-                        <h4 class="fragment"><span class="keyword">val</span> or no prefix means the members aren't re-assignable</h4>
-                        <h4 class="fragment"><span class="highlight">toString</span>-, <span class="highlight">equals</span>-, <span class="highlight">hashCode</span>- and <span class="highlight">copy</span>-methods <span class="parenthesis">(and more)</span> generated for you</h4>
-                        <h4 class="fragment">You can't inherit a <span class="keyword">case class</span></h4>
-                        <h4 class="fragment"><span class="keyword">Case classes</span> are good for pattern matching</h4>
-                        <h4 class="fragment"><span class="keyword">Case classes</span> and named parameters make it easy to work using immutable objects</h4>
+                        <h4 class="fragment"><span class="keyword">Immutable</span> collections are default</h4>
+                        <h4 class="fragment">Both parallel and non-parallel collections exist</h4>
+                        <h4 class="fragment"><span class="highlight">Non-parallel</span> collections are default</h4>
+                        <h4 class="fragment">Rich collection api</h4>
+                        <h4 class="fragment">Know your collection types, or pay the price</h4>
+                        <h4 class="fragment">If lazy, use Vector</h4>
                     </section>
 
                     <section >
