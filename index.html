@@ -1018,43 +1018,7 @@ val parallelTime = measureTime(workers) { //parallel work
                 <section>
                     <section>
                         <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <h2>Examples in the REPL</h2>
-                    </section>
-
-                    <section>
-                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala;">
-import collection.mutable.ListBuffer
-
-val names = ListBuffer("Olof")
-names += "Anna" //append
-println(names.mkString(", ")) //prints Olof, Anna
-
-var names = List("Olof") //immutable
-"Anna" :: names //prepend
-//names = List("Olof").. you must store the new list
-
-names = "Anna" :: names //prepend and store in variable
-//names = List("Anna", "Olof")
-
-var names = Vector("Olof") //immutable
-names = "Anna" +: names //append
-//names = Vector("Anna", "Olof")
-
-var names = Vector("Olof") //immutable
-names = names :+ "Anna" //prepend
-//names = Vector("Olof", "Anna")
-                        </pre>
-                    </section>
-                    <section>
-                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment">Both mutable and immutable collections exist</h4>
-                        <h4 class="fragment"><span class="keyword">Immutable</span> collections are default</h4>
-                        <h4 class="fragment">Both parallel and non-parallel collections exist</h4>
-                        <h4 class="fragment"><span class="highlight">Non-parallel</span> collections are default</h4>
-                        <h4 class="fragment">Rich collection api</h4>
-                        <h4 class="fragment">Know your collection types, or pay the price</h4>
-                        <h4 class="fragment">If lazy, use Vector</h4>
+                        <h2>... not done yet ...</h2>
                     </section>
                 </section>
                 <!-- RESOURCES -->
