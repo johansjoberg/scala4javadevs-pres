@@ -1047,8 +1047,58 @@ val parallelTime = measureTime(workers){
                 <!-- PATTERN MATCHING -->
                 <section>
                     <section>
-                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <h2>... not done yet ...</h2>
+                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
+                        <h2>Examples in the REPL</h2>
+                    </section>
+                    <section>
+                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
+                        <pre class="brush: scala; gutter: false;">
+//match like Java switch
+def reply(input: String) = input match {
+  case "Hello"   => "Hi there!"
+  case "Goodbye" => "See ya!"
+  case _         => "Say what?"
+}
+
+println(reply("Goodbye")) //prints 'See ya!'
+
+
+def whichMedal(position: Int) = position match {
+ case 1        => "Gold"
+ case 2        => "Silver"
+ case 3        => "Bronze"
+ case loserPos => "You don't get medals for position " + loserPos
+}
+
+print(whichMedal(4)) //prints 'You don't get medals for position 4'
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
+                        <pre class="brush: scala; gutter: false;">
+trait HasWater
+case class Human extends HasWater
+case class Cucumber extends HasWater
+
+//match on types
+def waterAmount(hasWater: HasWater) = hasWater match {
+  case Human    => 0.90
+  case Cucumber => 0.95
+  case _        => throw new Exception("Dunno")
+}
+
+println(waterAmount(new Human)) //prints '0.9'
+
+
+def whichMedal(position: Int) = position match {
+ case 1        => "Gold"
+ case 2        => "Silver"
+ case 3        => "Bronze"
+ case loserPos => "You don't get medals for position " + loserPos
+}
+
+print(whichMedal(4)) //prints 'You don't get medals for position 4'
+                        </pre>
                     </section>
                 </section>
                 <!-- RESOURCES -->
