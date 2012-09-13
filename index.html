@@ -66,7 +66,7 @@
 
             div.left_column {
                 float: left;
-                width: 7.2em;
+                width: 6.0em;
                 padding-right: 0.5em;
                 display: inline;
                 border-right: 1px #808080 solid;
@@ -74,7 +74,7 @@
 
             div.center_column {
                 float: left;
-                width: 7.2em;
+                width: 6.0em;
                 display: inline;
                 padding-right: 0.5em;
                 padding-left: 0.5em;
@@ -83,13 +83,25 @@
 
             div.right_column {
                 float: right;
-                width: 7.2em;
+                width: 6.0em;
                 display: inline;
                 padding-left: 0.5em;
             }
 
             h4.link{
-                font-size: 1em;
+                font-size: 0.9em;
+                line-height: 0.6em;
+            }
+            .disclaimer_title{
+                font-variant: small-caps;
+                font-weight: bold;
+                font-size: 0.7em;
+                line-height: 1.3em;
+            }
+            .disclaimer{
+                font-variant: small-caps;
+                font-size: 0.5em;
+                line-height: 0.9em;
             }
         </style>
 	</head>
@@ -100,11 +112,23 @@
 
 			<!-- Used to fade in a background when a specific slide state is reached -->
 			<div class="state-background"></div>
-			
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
 					<h1 class="title">Scala</h1> <h4 class="title">for Java developers</h4>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="disclaimer_title">Note:</div>
+                    <div class="disclaimer">The code examples in this presentation is in no way ideomatic/best-practice Scala. All code is tailored to serve the education purpose of the section it belongs to.</div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="disclaimer_title" style="text-align: right;">Author:</div>
+                    <div class="disclaimer" style="text-align: right;">Johan Sjöberg</div>
                     <script>
 						// Delicously hacky. Look away.
 						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
@@ -112,7 +136,7 @@
 				</section>
 
                 <section>
-                    <h1 class="title">Orientation</h1> <h4 class="title">Click your chapter of interest</h4>
+                    <h1 class="title">Orientation</h1> <h4 class="title">Choose chapter</h4>
                     <div class="my_wrapper">
 
                         <ol>
@@ -442,7 +466,7 @@ println(opinion)
                         <h2>Examples in the REPL</h2>
                     </section>
                     <section >
-                        <h1>For comprehensions</h1>
+                        <h1>For comprehension</h1>
                         <pre class="brush: scala;">
 val names = List("Abraham", "Anna", "Ella", "Tomas", "Stellan")
 
@@ -967,20 +991,19 @@ case class Person(name: String, age: Int)
 val persons = List(
   Person("John Taylor", 40),
   Person("Anne Edwards", 50),
-  Person("Pete Smith", 16)
+  Person("Pete Smith", 9)
 )
-val aboveEighteen = persons.filter(_.age > 18)
-val (aboveEighteen, eighteenAndBelow) = persons.partition(_.age > 18)
+val aboveTen = persons.filter(_.age > 10)
+val (aboveTen, tenAndBelow) = persons.partition(_.age > 10)
 val names = persons.map(_.name)
                         </pre>
                     </section>
                     <section>
                         <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala; gutter: false;">
+                        <pre class="brush: scala;">
 import collection.GenSeq
 
-//class for simulating work
-case class Worker(workInMs: Long) {
+case class Worker(workInMs: Long) { //class for simulating work
   def work() = {
     Thread.sleep(workInMs)
     "Done!"
@@ -988,21 +1011,20 @@ case class Worker(workInMs: Long) {
 }
 
 //method for measuring the time of the execution
-def measureTime(workers: List[Worker])(work: GenSeq[Worker] => GenSeq[String]) = {
+def measureTime(workers: List[Worker])
+               (work: GenSeq[Worker] => GenSeq[String]) = {
   val start = System.currentTimeMillis()
   work(workers)
   val stop = System.currentTimeMillis()
   stop - start
 }
 
-//create a list of 100 Worker objects
-val workers = List.fill(100)(Worker(100))
+val workers = List.fill(100)(Worker(100)) //create 100 Workers
 
-val sequentialTime = measureTime(workers) { //sequential work
+val sequentialTime = measureTime(workers){
   _.map(_.work())
 }
-
-val parallelTime = measureTime(workers) { //parallel work
+val parallelTime = measureTime(workers){
   _.par.map(_.work())
 }
                         </pre>
