@@ -613,7 +613,7 @@ println(clientsWithZeroBalance.mkString("\n"))
                     </section>
                     <section >
                         <h1 class="title">Class</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala;">
+                        <pre class="brush: scala; gutter: false;">
 //public access for members by default
 class Name(val firstName: String, val lastName: String){
 
@@ -660,7 +660,7 @@ val annSmith = new Name(lastName = "Smith", firstName = "Ann")
                         <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
                         <pre class="brush: scala; gutter: false;">
 object Name { //Companion object
-  def apply( val firstName: String = "John", val lastName: String = "Doe") = {
+  def apply(firstName: String = "John", lastName: String = "Doe") = {
     new Name(firstName, lastName)
   }
 
@@ -778,7 +778,8 @@ val otherJohan = johan.copy(age = 50)
                         <h1 class="title">Case class</h1> <h4 class="title">Basics</h4>
                         <h4>Let's try the same in Java</h4>
                         <pre style="font-size: 50%;" class="brush: java;">
-public final class Person { //Defines a immutable person class in Java
+//Defines a immutable person class in Java
+public final class Person {
     private final String firstName;
     private final String lastName;
     private final int age;
@@ -854,7 +855,8 @@ val nameLength = for(name <- names) yield countLength(name)
 //You can do the same using the collection method map in scala
 val nameLength = names.map(countLength)
 
-//defines a method that does the same as the previously declared function
+//defines a method that does the same as the previously declared
+//function
 def countLength(input: String) = input.length()
 
 //countLength method get converted to a function at compile time,
@@ -882,7 +884,7 @@ val nameLength = names.map( name => name.length())
                     </section>
                     <section>
                         <h1 class="title">Higher-Order Functions</h1>
-                        <pre class="brush: scala;">
+                        <pre class="brush: scala; gutter: false;">
 //higher-order function that filters Strings, how they are filtered
 //is decided by the predicate function input
 val filter = (predicate: String => Boolean, strings: List[String]) => {
