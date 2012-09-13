@@ -26,14 +26,17 @@
         <link type="text/css" rel="stylesheet" href="lib/styles/shThemeRDark.css"/>
         <link type="text/css" rel="stylesheet" href="lib/styles/shCoreRDark.css"/>
         <script type="text/javascript">
-//            SyntaxHighlighter.defaults['gutter'] = false;
+            //SyntaxHighlighter.defaults['gutter'] = false;
             SyntaxHighlighter.defaults['smart-tabs'] = false;
             SyntaxHighlighter.defaults['class-name'] = 'class_name_demo';
             SyntaxHighlighter.all();
         </script>
 
         <style>
-            .class_name_demo { border: 2px solid #000; padding: 10px}
+            .class_name_demo {
+                border: 2px solid #000;
+                padding: 2px;
+            }
             .keyword {
                 color: #87ceeb;
                 /*text-shadow: 0px 0px 8px #000;*/
@@ -444,15 +447,7 @@ println(opinion)
                         <pre class="brush: scala;">
 val names = List("Abraham", "Anna", "Ella", "Tomas", "Stellan")
 
-//Declarative
-val namesLongerThanFourChars = for(
-  name <- names
-  if name.length > 4
-) yield name
-
-println(namesLongerThanFourChars.mkString(", "))
-
-//Imperative
+//Imperative - Java-like
 var namesLongerThanFourChars = List[String]()
 for(name <- names){
   if(name.length > 4) {
@@ -464,6 +459,13 @@ for(name <- names){
 
 println(namesLongerThanFourChars.mkString(", "  ))
 
+//Declarative
+val namesLongerThanFourChars = for(
+  name <- names
+  if name.length > 4
+) yield name
+
+println(namesLongerThanFourChars.mkString(", "))
                         </pre>
                     </section>
                     <section>
@@ -633,9 +635,9 @@ val annSmith = new Name(lastName = "Smith", firstName = "Ann")
                     </section>
                     <section >
                         <h1 class="title">Object</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala;">
+                        <pre class="brush: scala; gutter: false;">
 object Name { //Companion object
-  def apply(val firstName:String = "John", val lastName: String = "Doe") = {
+  def apply( val firstName: String = "John", val lastName: String = "Doe") = {
     new Name(firstName, lastName)
   }
 
@@ -676,13 +678,16 @@ trait Speaker {
 }
 
 trait Greeter { person: Person with Speaker =>
-  def greet() = speak("Hi my name is " + person.firstName + " " + person.lastName)
+  def greet() = speak("Hi, My name is " + person.firstName)
 }
 
 //Mixin traits during instance creation
-val person = new Person("Ted", "Steele") with Speaker with Greeter
+val person = new Person("Ted", "Steele") with Speaker
+person.speak("Hello my name is " + person.firstName)
 
-person.greet() //Prints 'Hi my name is Ted Steele'
+//Multiple inheritance
+val person = new Person("Ted", "Steele") with Speaker with Greeter
+person.greet()
                         </pre>
                     </section>
                     <section>
@@ -869,7 +874,8 @@ val notEmptyString = (str:String) => !str.isEmpty
 
 val words = List("Hi", "", "there")
 
-val realWords = filter(notEmptyString, words) //realWords = List(”Hi”, ”There”)
+val realWords = filter(notEmptyString, words)
+//realWords = List(”Hi”, ”There”)
                        </pre>
                     </section>
                     <section>
@@ -971,7 +977,7 @@ val names = persons.map(_.name)
                     </section>
                     <section>
                         <h1 class="title">Collections</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala;">
+                        <pre class="brush: scala; gutter: false;">
 import collection.GenSeq
 
 //class for simulating work
