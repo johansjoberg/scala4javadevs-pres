@@ -14,11 +14,8 @@
 		
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 		
-		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
-
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.0/styles/zenburn.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
         <script type="text/javascript" src="lib/scripts/shCore.js"></script>
         <script type="text/javascript" src="lib/scripts/shBrushScala.js"></script>
@@ -30,6 +27,11 @@
             SyntaxHighlighter.defaults['smart-tabs'] = false;
             SyntaxHighlighter.defaults['class-name'] = 'class_name_demo';
             SyntaxHighlighter.all();
+        </script>
+
+        <script>
+            // If the query includes 'print-pdf' we'll use the PDF print sheet
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
         <style>
@@ -61,9 +63,6 @@
                 font-size: 65%;
                 vertical-align: middle;
             }
-            .syntaxhighlighter table td.code .line {
-                color: red;
-            }
 
             div.left_column {
                 float: left;
@@ -91,7 +90,6 @@
 
             h4.link{
                 font-size: 1em;
-                line-height: 0.8em;
             }
         </style>
 	</head>
@@ -147,6 +145,7 @@
 
                         <div class="right_column">
                             <h4 class="link"><a href="#/22">21. Resources</a></h4>
+                            <h4 class="link"><a href="#/23">22. The End</a></h4>
                         </div>
 
                         </ol>
@@ -999,13 +998,11 @@ def measureTime(workers: List[Worker])(work: GenSeq[Worker] => GenSeq[String]) =
 //create a list of 100 Worker objects
 val workers = List.fill(100)(Worker(100))
 
-//sequential work
-val sequentialTime = measureTime(workers) {
+val sequentialTime = measureTime(workers) { //sequential work
   _.map(_.work())
 }
 
-//parallel work
-val parallelTime = measureTime(workers) {
+val parallelTime = measureTime(workers) { //parallel work
   _.par.map(_.work())
 }
                         </pre>
@@ -1027,47 +1024,31 @@ val parallelTime = measureTime(workers) {
                 <section>
                     <section>
                         <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <h2>Examples in the REPL</h2>
+                        <h2>... not done yet ...</h2>
                     </section>
-
+                </section>
+                <!-- RESOURCES -->
+                <section>
                     <section>
-                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala;">
-import collection.mutable.ListBuffer
-
-val names = ListBuffer("Olof")
-names += "Anna" //append
-println(names.mkString(", ")) //prints Olof, Anna
-
-var names = List("Olof") //immutable
-"Anna" :: names //prepend
-//names = List("Olof").. you must store the new list
-
-names = "Anna" :: names //prepend and store in variable
-//names = List("Anna", "Olof")
-
-var names = Vector("Olof") //immutable
-names = "Anna" +: names //append
-//names = Vector("Anna", "Olof")
-
-var names = Vector("Olof") //immutable
-names = names :+ "Anna" //prepend
-//names = Vector("Olof", "Anna")
-                        </pre>
+                        <h1 class="title">Resources</h1> <h4 class="title">Books</h4>
+                        <h4><a href="http://www.artima.com/shop/programming_in_scala_2ed">Programming in Scala</a><span class="parenthesis"> by Martin Odersky, Lex Spoon, and Bill Venners</h4>
+                        <h4><a href="https://www.studentlitteratur.se/#33847-01">Ett första steg i Scala</a> <span class="parenthesis"> by Olle Kullberg, Victor Klang and Örjan Lundberg (In Swedish)</span></h4>
                     </section>
                     <section>
-                        <h1 class="title">Pattern Matching</h1> <h4 class="title">Basics</h4>
-                        <h4 class="fragment">Both mutable and immutable collections exist</h4>
-                        <h4 class="fragment"><span class="keyword">Immutable</span> collections are default</h4>
-                        <h4 class="fragment">Both parallel and non-parallel collections exist</h4>
-                        <h4 class="fragment"><span class="highlight">Non-parallel</span> collections are default</h4>
-                        <h4 class="fragment">Rich collection api</h4>
-                        <h4 class="fragment">Know your collection types, or pay the price</h4>
-                        <h4 class="fragment">If lazy, use Vector</h4>
+                        <h1 class="title">Resources</h1> <h4 class="title">Web</h4>
+                        <h4><a href="http://docs.scala-lang.org/">Scala documentation</a><span class="parenthesis"> Scaladoc, tutorials, guides, cheatsheets, style guide etc.</h4>
+                        <h4><span class="parenthesis">Google, Stack Overflow and much much more..</span></h4>
+                    </section>
+                    <section>
+                        <h1 class="title">Resources</h1> <h4 class="title">Presentation</h4>
+                        <h4><a href="http://lab.hakim.se/reveal-js/">Reveal.js</a><span class="parenthesis"> by Hakim El Hattab</h4>
+                        <h4><a href="http://alexgorbatchev.com/SyntaxHighlighter/">Syntax Highlighter</a><span class="parenthesis"> by Alex Gorbatchev</h4>
+                        <br />
+                        <h3>Big thanks for making it Open Source!</h3>
                     </section>
                 </section>
                 <!-- advanced section -->
-                <section>
+               <!-- <section>
                     <section>
                         <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
                         <h2>Examples in the REPL</h2>
@@ -1076,7 +1057,7 @@ names = names :+ "Anna" //prepend
                     <section>
                         <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
                         <h4 class="fragment">Support for multiple parameter lists</h4>
-                        <!-- write more if used -->
+                        &lt;!&ndash; write more if used &ndash;&gt;
                     </section>
 
                     <section >
@@ -1091,126 +1072,15 @@ var double = multiply(x)_ //returns a partially applied function for
 val eight = double(4) //which we can use for doubling Ints
                         </pre></div>
                     </section>
+                </section>-->
+				
+				<section>
+					<h1>The end</h1>
+                    <h3><span class="parenthesis">@Author( <span class="highlight">"Johan Sjöberg"</span> )</span></h3>
+                    <h3><span class="parenthesis">@Email( <span class="highlight"><a href="mailto://johan.d.sjoberg@gmail.com">johan.d.sjoberg@gmail.com</a></span> )</h3>
+                    <h3><span class="parenthesis">@Github(<span class="highlight"> <a href="https://github.com/johansjoberg">github.com/johansjoberg</a></span> )</h3>
+                    <h3><span class="parenthesis">@Twitter(<span class="highlight"> <a href="https://twitter.com/johansjoberg_">johansjoberg_</a></span> )</h3>
                 </section>
-
-                <section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This let's you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#/7/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#/7/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#/7/0" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
-				
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-    
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i < len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-				
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,<br/>
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Fragmented Views</h2>
-					<p>Hit the next arrow...</p>
-					<p class="fragment">... to step through ...</p>
-					<ol>
-						<li class="fragment"><code>any type</code></li>
-						<li class="fragment"><em>of view</em></li>
-						<li class="fragment"><strong>fragments</strong></li>
-					</ol>
-				</section>
-				
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
-						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
-					</a>
-				</section>
-				
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-				
-				<section>
-					<h1>THE END</h1>
-					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
-				</section>
 			</div>
 
 			<!-- The navigational controls UI -->
