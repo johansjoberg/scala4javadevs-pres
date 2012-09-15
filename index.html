@@ -103,6 +103,18 @@
                 font-size: 0.5em;
                 line-height: 0.9em;
             }
+
+            .smallTitle{
+                font-variant: small-caps;
+                font-weight: bold;
+                font-size: 0.8em;
+                line-height: 1.2em;
+            }
+            .smallTitleDesc{
+                color: gray;
+                font-size: 85%;
+                vertical-align: middle;
+            }
         </style>
 	</head>
 	
@@ -173,8 +185,10 @@
                         </div>
 
                         <div class="right_column">
-                            <h4 class="link"><a href="#/22">21. Resources</a></h4>
-                            <h4 class="link"><a href="#/23">22. The End</a></h4>
+                            <h4 class="link"><a href="#/23">21. What is left?</h4>
+                            <h4 class="link"><a href="#/24">22. Frameworks</h4>
+                            <h4 class="link"><a href="#/25">23. Resources</a></h4>
+                            <h4 class="link"><a href="#/26">24. The End</a></h4>
                         </div>
 
                         </ol>
@@ -705,7 +719,7 @@ trait Speaker {
   def speak(sentences: String) = println(sentences)
 }
 
-trait Greeter { person: Person with Speaker =>
+trait Greeter { person: Person with Speaker => //self-type
   def greet() = speak("Hi, My name is " + person.firstName)
 }
 
@@ -723,7 +737,7 @@ person.greet()
                         <h4 class="fragment"><span class="keyword">trait</span> keyword used for defining a trait</h4>
                         <h4 class="fragment">Like a Java <span class="keyword">interface</span>, but  method implementations</h4>
                         <h4 class="fragment"><span class="keyword">extends</span> and <span class="keyword">with</span> are used when mixing in a trait into a class</h4>
-                        <h4 class="fragment"><span class="keyword">Self-types</span> give access to the class that has the trait</h4>
+                        <h4 class="fragment"><span class="keyword">Self-types</span> give access to the object that has the trait</h4>
                         <h4 class="fragment"><span class="keyword">Self-types</span> restricts usage of the trait</h4>
                         <h4 class="fragment">Traits can be mixed in during object creation</h4>
                     </section>
@@ -1052,13 +1066,14 @@ val parallelTime = measureTime(workers){
                 <!-- PATTERN MATCHING -->
                 <section>
                     <section>
-                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
+                        <h1 class="title">Pattern Matching</h1>
                         <h2>Examples in the REPL</h2>
                     </section>
                     <section>
-                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala; gutter: false;">
-//match like Java switch
+                        <h1 class="title">Pattern Matching</h1>
+                        <h4>Value pattern matching</h4>
+                        <pre class="brush: scala;">
+//Like Java switch statement
 def reply(input: String) = input match {
   case "Hello"   => "Hi there!"
   case "Goodbye" => "See ya!"
@@ -1066,8 +1081,12 @@ def reply(input: String) = input match {
 }
 
 println(reply("Goodbye")) //prints 'See ya!'
-
-
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Pattern Matching</h1>
+                        <h4>Variable/Value pattern matching</h4>
+                        <pre class="brush: scala;">
 def whichMedal(position: Int) = position match {
  case 1        => "Gold"
  case 2        => "Silver"
@@ -1079,31 +1098,97 @@ print(whichMedal(4)) //prints 'You don't get medals for position 4'
                         </pre>
                     </section>
                     <section>
-                        <h1 class="title">Pattern Match</h1> <h4 class="title">Basics</h4>
-                        <pre class="brush: scala; gutter: false;">
+                        <h1 class="title">Pattern Matching</h1>
+                        <h4>Type pattern matching</h4>
+                        <pre class="brush: scala;">
 trait HasWater
 case class Human extends HasWater
 case class Cucumber extends HasWater
 
 //match on types
 def waterAmount(hasWater: HasWater) = hasWater match {
-  case Human    => 0.90
-  case Cucumber => 0.95
-  case _        => throw new Exception("Dunno")
+  case Human    => 0.65
+  case Cucumber => 0.96
+  case _        => throw new Exception("Don't know..")
 }
-
-println(waterAmount(new Human)) //prints '0.9'
-
-
-def whichMedal(position: Int) = position match {
- case 1        => "Gold"
- case 2        => "Silver"
- case 3        => "Bronze"
- case loserPos => "You don't get medals for position " + loserPos
-}
-
-print(whichMedal(4)) //prints 'You don't get medals for position 4'
+println(waterAmount(new Human)) //prints '0.65'
                         </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Pattern Matching</h1>
+                        <h4>Deconstruction pattern matching</h4>
+                        <pre class="brush: scala;">
+case class Person(firstName: String, lastName: String, age: Int)
+val persons = List(
+  Person("Johan", "Sjöberg", 33),
+  Person("Henrik", "Andersson", 32),
+  Person("Anna", "Palm", 15)
+)
+
+//matcher is a function of type Person => Sis a functiontring
+val matcher = (person: Person) => person match {
+  case p@Person("Johan", "Sjöberg", 33) => {
+    p.firstName + " is " + p.age + " years young."
+  }
+  case Person(fname, _, age) if age < 18 => {
+    fname + " is " + age + " years young."
+  }
+  case Person(fname, _, age) => {
+    fname + " is " + age + " years old."
+  }
+}
+
+//transform all persons to a list of strings
+val output = persons.map(matcher).mkString("\n")
+print(output)
+
+                        </pre>
+                    </section>
+                    <section>
+                        <h1 class="title">Pattern Matching</h1>
+                        <h4 class="fragment">Match by values <span class="parenthesis">(Java-like Switch)</span></h4>
+                        <h4 class="fragment">Match by variables</h4>
+                        <h4 class="fragment">Match using types</h4>
+                        <h4 class="fragment">Match by deconstructing objects</h4>
+                        <h4 class="fragment">Bind a match to a variable using <span class="keyword">@</span></h4>
+                    </section>
+                </section>
+
+                <!-- WHAT IS LEFT? -->
+                <section>
+                    <section>
+                        <h1 class="title">What is left?</h1>
+                        <hr />
+                        <h4>Some of the things we haven't gone through</h4>
+                        <hr />
+                        <div class="smallTitle">Multiple parameter lists in methods</div>
+                        <div class="smallTitle">Partial functions</div>
+                        <div class="smallTitle">Partially applied functions</div>
+                        <div class="smallTitle">Advanced pattern matching</div>
+                        <div class="smallTitle">Type-safe duck typing</div>
+                        <div class="smallTitle">Type system</div>
+                        <div class="smallTitle">Lazy evaluation</div>
+                        <div class="smallTitle">Currying</div>
+                        <div class="smallTitle">Option</div>
+                    </section>
+                </section>
+
+                <!-- FRAMEWORKS -->
+                <section>
+                    <section>
+                        <h1 class="title">Frameworks</h1>
+                        <div class="smallTitle">Almost any Java framework, Spring, JPA, Wicket etc.</div>
+                        <div class="smallTitle"><a href="http://akka.io/">Akka</a><span class="smallTitleDesc"> (actors, concurrency, scalability etc.)</div>
+                        <div class="smallTitle"><a href="http://www.playframework.org/">Play</a><span class="smallTitleDesc"> (web framework)</div>
+                        <div class="smallTitle"><a href="http://liftweb.net/">Lift</a><span class="smallTitleDesc"> (web framework)</div>
+                        <div class="smallTitle"><a href="http://www.scalatra.org/">Scalatra</a><span class="smallTitleDesc"> (web framework)</div>
+                        <div class="smallTitle"><a href="http://slick.typesafe.com/">Slick</a><span class="smallTitleDesc"> (database access)</div>
+                        <div class="smallTitle"><a href="http://scalaquery.org/">ScalaQuery</a><span class="smallTitleDesc"> (database access)</div>
+                        <div class="smallTitle"><a href="http://squeryl.org/">Squeryl</a><span class="smallTitleDesc"> (database access)</div>
+                        <div class="smallTitle"><a href="http://etorreborre.github.com/specs2/">Specs2</a><span class="smallTitleDesc"> (test)</div>
+                        <div class="smallTitle"><a href="http://www.scalatest.org/">ScalaTest</a><span class="smallTitleDesc"> (test)</div>
+                        <div class="smallTitle"><a href="https://github.com/rickynils/scalacheck#readme">ScalaCheck</a><span class="smallTitleDesc"> (test)</div>
+                        <div class="smallTitle">And many many more..</div>
                     </section>
                 </section>
                 <!-- RESOURCES -->
