@@ -5,7 +5,7 @@ object ForComprehension1 {
   var namesLongerThanFourChars = List[String]()
   for(name <- names){ 
     if(name.length > 4) {
-      // :: operator means append name to namesLongerThanFourChars
+      // :: operator means prepend name to namesLongerThanFourChars
       // and create a new list
       namesLongerThanFourChars = name :: namesLongerThanFourChars
     }
