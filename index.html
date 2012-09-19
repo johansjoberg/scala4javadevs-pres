@@ -1128,7 +1128,7 @@ val persons = List(
   Person("Anna", "Palm", 15)
 )
 
-//matcher is a function of type Person => Sis a functiontring
+//matcher is a function of type Person => String
 val matcher = (person: Person) => person match {
   case p@Person("Johan", "Sjöberg", 33) => {
     p.firstName + " is " + p.age + " years young."
@@ -1215,34 +1215,8 @@ print(output)
                         <h3>Big thanks for making it Open Source!</h3>
                     </section>
                 </section>
-                <!-- advanced section -->
-               <!-- <section>
-                    <section>
-                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
-                        <h2>Examples in the REPL</h2>
-                    </section>
-
-                    <section>
-                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
-                        <h4 class="fragment">Support for multiple parameter lists</h4>
-                        &lt;!&ndash; write more if used &ndash;&gt;
-                    </section>
-
-                    <section >
-                        <h1 class="title">Methods</h1> <h4 class="title">Advanced</h4>
-
-                        <div class="fragment"><pre class="brush: scala;">
-def multiply(x: Int)(y: Int) = x * y //multiple parameter lists
-var double = multiply(x)(_) //returns a partially applied function
-var double = multiply(x)_ //returns a partially applied function for
-                          //the remaining parameter lists
-
-val eight = double(4) //which we can use for doubling Ints
-                        </pre></div>
-                    </section>
-                </section>-->
-				
-				<section>
+				<!-- THE END -->
+                <section>
 					<h1>The end</h1>
                     <h3><span class="parenthesis">@Author( <span class="highlight">"Johan Sjöberg"</span> )</span></h3>
                     <h3><span class="parenthesis">@Email( <span class="highlight"><a href="mailto://johan.d.sjoberg@gmail.com">johan.d.sjoberg@gmail.com</a></span> )</h3>
@@ -1299,11 +1273,6 @@ val eight = double(4) //which we can use for doubling Ints
 				});
 
 			} );
-			
-			// Load highlight.js for syntax highlighting of code samples
-			/*head.js( 'http://yandex.st/highlightjs/7.0/highlight.min.js', function() {
-				hljs.initHighlightingOnLoad();
-			} );*/
 
 			// If we're runnning the notes server we need to include some additional JS
 			// TODO Is there a better way to determine if we're running the notes server?
