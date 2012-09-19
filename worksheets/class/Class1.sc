@@ -3,10 +3,10 @@ object Class1 {
   val janeDoe = new Name("Jane")
   val robSmith = new Name("Rob", "Smith")
   val annSmith = new Name(lastName = "Smith", firstName = "Ann")
-}
+} 
 
 class Name(val firstName: String, val lastName: String){
-
+ 
   def this(firstName: String) = this(firstName, "Doe")
 
   def this() = this("John")

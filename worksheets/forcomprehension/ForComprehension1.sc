@@ -3,7 +3,7 @@ object ForComprehension1 {
 
   //Similar to Java for-loop
   var namesLongerThanFourChars = List[String]()
-  for(name <- names){
+  for(name <- names){ 
     if(name.length > 4) {
       // :: operator means append name to namesLongerThanFourChars
       // and create a new list

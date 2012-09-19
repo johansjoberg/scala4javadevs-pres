@@ -4,7 +4,7 @@ object Collection1 {
   val names1 = ListBuffer("Olof")
   names1 += "Anna"
   println(names1.mkString(", "))
-
+ 
   var names2 = List("Olof")
   "Anna" :: names2
 
