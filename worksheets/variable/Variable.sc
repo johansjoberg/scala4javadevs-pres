@@ -1,4 +1,4 @@
-object Variables {
+object Variable {
   var apple: String = "Apple"
   apple = "Pear"
 

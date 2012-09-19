@@ -1,4 +1,4 @@
-object Values {
+object Value {
   val apple: String = "Apple"
   //apple = "Pear"
 

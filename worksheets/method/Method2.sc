@@ -1,4 +1,4 @@
-object Methods2 {
+object Method2 {
   def double(number: Int): Int = number * 2
   double(2)
 }

@@ -1,3 +1,3 @@
-object Methods1 {
+object Method1 {
   //def double(number: Int)
 }
